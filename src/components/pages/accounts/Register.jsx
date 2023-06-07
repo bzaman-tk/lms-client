@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hook/useAuth';
+import SocialLogin from '../../shared/SocialLogin';
 
 const Register = () => {
     const { createUser, updateUserProfile } = useAuth();
@@ -114,7 +115,7 @@ const Register = () => {
                             <p className='mt-3 text-center'>Already have Registered? <Link className='text-blue-500' to='/login'>Login</Link></p>
                         </form>
                         <div className="divider">Or</div>
-                        <button className="btn">google</button>
+                        <SocialLogin />
                     </div>
                 </div>
             </div>
