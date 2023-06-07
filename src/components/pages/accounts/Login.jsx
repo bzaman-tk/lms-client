@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../../shared/SocialLogin';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
+    const [show, setShow] = useState(false)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
 
@@ -22,13 +24,19 @@ const Login = () => {
                                     {...register("email", { required: true })}
                                 />
                             </div>
-                            <div className="form-control">
+                            <div className="form-control relative">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password"
+                                <input type={show ? 'password' : 'text'}
                                     {...register("password", { required: true })}
                                     placeholder="password" className="input input-bordered" />
+                                <div onClick={() => setShow(!show)} className='absolute bottom-3 right-4 pb-1'>
+                                    {
+                                        show ? <FaEye /> :
+                                            <FaEyeSlash />
+                                    }
+                                </div>
                             </div>
                             <div className="form-control mt-6">
                                 <input className="btn btn-primary" value='Login' type="submit" />
