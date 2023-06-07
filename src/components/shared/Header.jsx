@@ -1,23 +1,48 @@
-import { useEffect } from 'react'
-import { themeChange } from 'theme-change'
+import { Link } from 'react-router-dom';
+import logo from '../../assets/logo-w.jpg';
 
 const Header = () => {
-    useEffect(() => {
-        themeChange(false)
-    }, [])
-
+    const user = true;
+    const navItems = <>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/instructors'>Instructors</Link></li>
+        <li><Link to='/classes'>Classes</Link></li>
+        {
+            user && <li><Link to='/dashboard'>Dashboard </Link></li>
+        }
+    </>
     return (
-        <div>
-            <h1>Hi Header</h1>
-            <div className="m-5">
-                🌞
-                <div className="inline-block w-10">
-                    <span data-toggle-theme="dark,light" data-act-class="pl-4" className="border rounded-full border-green-700 flex items-center cursor-pointer w-10 transition-all duration-300 ease-in-out pl-0">
-                        <span className="rounded-full w-3 h-3 m-1 bg-green-700">
-                        </span>
-                    </span>
+        <div className="bg-gray-200">
+            <div className="navbar text-gray-900 container mx-auto">
+                <div className="navbar-start">
+                    <div className="dropdown">
+                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        </label>
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                            {
+                                navItems
+                            }
+                        </ul>
+                    </div>
+                    <Link to='/' className="normal-case text-xl">
+                        <img className='rounded-full' src={logo} alt="" />
+                    </Link>
                 </div>
-                🌚
+                <div className="ml-52 navbar-center hidden lg:flex">
+                    <ul className="menu menu-horizontal px-1">
+                        {
+                            navItems
+                        }
+                    </ul>
+                </div>
+                <div className="navbar-end">
+                    {
+                        user ?
+                            <Link>photo<img src={user?.photoURL} alt={user?.displayName} /></Link> :
+                            <Link to='/login' className='btn'>Login</Link>
+                    }
+                </div>
             </div>
         </div>
     );
