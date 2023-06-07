@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../../../hook/useAuth';
 
 const Register = () => {
+    const { createUser, updateUserProfile } = useAuth();
+    const navigate = useNavigate()
     const [error, setError] = useState({})
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -11,6 +14,19 @@ const Register = () => {
             setError({ type: 'repass', message: 'password did not matched' })
             return;
         }
+        createUser(data.email, data.password)
+            .then(result => {
+                updateUserProfile(data.name, data.photo)
+                    .then(() => {
+                        navigate('/')
+                    })
+                    .catch(e => {
+                        setError({ type: 'singup', message: e.message })
+                    })
+            })
+            .catch(e => {
+                setError({ type: 'singup', message: e.message })
+            })
         console.log(data)
     };
 
@@ -89,7 +105,11 @@ const Register = () => {
                                         {console.log(errors.password)}
                                     </span>
                                 }
-
+                                {
+                                    (error && error?.type === 'singup') && <span className="block mt-3">
+                                        {error?.message}
+                                    </span>
+                                }
                             </p>
                             <p className='mt-3 text-center'>Already have Registered? <Link className='text-blue-500' to='/login'>Login</Link></p>
                         </form>
