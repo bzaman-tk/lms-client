@@ -4,13 +4,13 @@ import ClassCard from '../shared/ClassCard';
 
 const Classes = () => {
     const { isLoading, isError, data: classes = [], error } = useQuery({
-        queryKey: ['instructors'],
+        queryKey: ['classes'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/classes')
             return res.json();
         },
     })
-    console.log(classes);
+    // console.log(classes);
     return (
         <div className='container mx-auto my-12'>
             <div className="grid grid-cols-3 gap-5">
