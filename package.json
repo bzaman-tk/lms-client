@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.29.12",
+    "axios": "^1.4.0",
     "daisyui": "^2.51.6",
     "firebase": "^9.22.1",
     "react": "^18.2.0",
@@ -17,6 +19,7 @@
     "react-hook-form": "^7.44.3",
     "react-icons": "^4.9.0",
     "react-router-dom": "^6.11.1",
+    "swiper": "^9.3.2",
     "theme-change": "^2.5.0"
   },
   "devDependencies": {

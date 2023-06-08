@@ -17,6 +17,18 @@ const Register = () => {
         }
         createUser(data.email, data.password)
             .then(result => {
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ name: data.name, email: data.email })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        // console.log(data)
+                    })
+
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
                         navigate('/')
@@ -28,7 +40,7 @@ const Register = () => {
             .catch(e => {
                 setError({ type: 'singup', message: e.message })
             })
-        console.log(data)
+        //console.log(data)
     };
 
     // console.log(watch('cpassword'));
@@ -98,7 +110,7 @@ const Register = () => {
                                     placeholder="photo url" className="input input-bordered" />
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn btn-primary" value='Login' type="submit" />
+                                <input className="btn btn-primary" value='Register' type="submit" />
                             </div>
                             <p className='text-red-500'>
                                 {

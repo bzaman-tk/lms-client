@@ -1,9 +1,10 @@
 import React from 'react';
+import BannerSlider from '../shared/BannerSlider';
 
 const Home = () => {
     return (
         <div>
-            <p>home</p>
+            <BannerSlider />
         </div>
     );
 };
