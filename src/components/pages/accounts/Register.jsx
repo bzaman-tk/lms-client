@@ -22,7 +22,7 @@ const Register = () => {
                     headers: {
                         'content-type': 'application/json'
                     },
-                    body: JSON.stringify({ name: data.name, email: data.email })
+                    body: JSON.stringify({ name: data.name, email: data.email, photo: data.photo })
                 })
                     .then(res => res.json())
                     .then(data => {
