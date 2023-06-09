@@ -1,27 +1,24 @@
 import React from 'react';
 
-const ManageUserCard = () => {
+const ManageUserCard = ({ data, index, handleAction }) => {
+    const { _id, name, photo, email, role, enroll } = data || {}
     return (
         <tr>
             <th>
-                <label>
-                    <input type="checkbox" className="checkbox" />
-                </label>
+                {index + 1}
             </th>
             <td>
-                <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                <img className='w-16 rounded-lg' src={photo} alt=" " />
 
             </td>
             <td>
-                Zemlak, Daniel and Leannon
-                <br />
-                <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                {name}
             </td>
-            <td>Purple</td>
-            <td>Purple</td>
+            <td>{email}</td>
+            <td>{role}</td>
             <th className='text-center'>
-                <button className="btn w-10/12 bg-red-600 border-0 btn-sm">Make Admin</button>
-                <button className="btn block mx-auto mt-1 w-10/12 btn-sm border-0 bg-green-600">Make Instractor</button>
+                <button onClick={() => handleAction('admin', _id)} disabled={role === 'admin' && true} className="btn w-10/12 bg-red-600 border-0 btn-sm">Make Admin</button>
+                <button onClick={() => handleAction('instructor', _id)} disabled={role === 'instructor' && true} className="btn block mx-auto mt-1 w-10/12 btn-sm border-0 bg-green-600">Make Instractor</button>
             </th>
         </tr>
     );

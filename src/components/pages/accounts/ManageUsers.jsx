@@ -11,7 +11,22 @@ const ManageUsers = () => {
             return res.json();
         },
     })
-    console.log(users);
+    handleAction = (type, id) => {
+        fetch(`http://localhost:5000/all-users/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ role: type })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch()
+                    console.log('status updated to Approved');
+                }
+            })
+    }
     return (
         <div className='container mx-auto my-12 '>
             <h2 className="text-4xl font-bold text-center uppercase mb-12">manage Users</h2>
@@ -30,7 +45,16 @@ const ManageUsers = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <ManageUserCard />
+                        {
+                            users && users.map((user, i) =>
+                                <ManageUserCard
+                                    data={user}
+                                    handleAction={handleAction}
+                                    key={user._id}
+                                    index={i}
+                                />
+                            )
+                        }
                     </tbody>
 
                 </table>
