@@ -6,6 +6,8 @@ import Register from "../components/pages/accounts/Register";
 import Login from "../components/pages/accounts/Login";
 import Instructors from "../components/pages/Instructors";
 import Classes from "../components/pages/Classes";
+import Dashboard from "../layouts/Dashboard";
+import Account from "../components/pages/accounts/Account";
 
 const routes = createBrowserRouter([
     {
@@ -34,7 +36,19 @@ const routes = createBrowserRouter([
                 element: <Classes />
             }
         ]
+    },
+    {
+        path: '/dashboard',
+        element: <Dashboard />,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                index: true,
+                element: <Account />
+            }
+        ]
     }
+
 ])
 
 export default routes;
