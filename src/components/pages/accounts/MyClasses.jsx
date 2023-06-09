@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import useAuth from '../../../hook/useAuth';
+import MyClassesCard from './MyClassesCard';
 
 const MyClasses = () => {
     const { user } = useAuth()
@@ -13,9 +14,39 @@ const MyClasses = () => {
     })
     console.log(classes);
     return (
-        <div>
-
-        </div>
+        <div className="container mx-auto my-8">
+            <h2 className="text-2xl font-bold text-center uppercase mb-5">My Classes</h2>
+            <div className="overflow-x-auto">
+                <table className="table w-full">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span className="text-2xl">#</span>
+                            </th>
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th>Seats</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Total Enrolled <br /> Students</th>
+                            <th>Feedback</th>
+                            <th className='text-center'>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            classes && classes.map((course, i) =>
+                                <MyClassesCard
+                                    index={i}
+                                    course={course}
+                                    key={course._id}
+                                />
+                            )
+                        }
+                    </tbody>
+                </table>
+            </div >
+        </div >
     );
 };
 
