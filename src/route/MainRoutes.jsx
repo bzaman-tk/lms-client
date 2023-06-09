@@ -11,6 +11,7 @@ import Account from "../components/pages/accounts/Account";
 import ManageClassess from "../components/pages/accounts/ManageClassess";
 import Feedback from "../components/pages/accounts/Feedback";
 import ManageUsers from "../components/pages/accounts/ManageUsers";
+import MyClasses from "../components/pages/accounts/MyClasses";
 
 const routes = createBrowserRouter([
     {
@@ -68,7 +69,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: 'my-classes',
-                element: <div>my class</div>
+                element: <MyClasses />
             }
         ]
     }
