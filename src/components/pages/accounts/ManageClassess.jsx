@@ -3,7 +3,7 @@ import ManageClassCard from '../../shared/ManageClassCard';
 import { useQuery } from '@tanstack/react-query';
 
 const ManageClassess = () => {
-    const { isLoading, isError, data: classes = [], error } = useQuery({
+    const { isLoading, data: classes = [], refetch } = useQuery({
         queryKey: ['manageclasse'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/all-classes')
@@ -13,7 +13,17 @@ const ManageClassess = () => {
     // console.log(classes);
     const handleAction = (type, id) => {
         if (type === 'approved') {
-            console.log('objectobject');
+            fetch(`http://localhost:5000/classes/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ status: 'approved' })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                })
         } else {
             console.log('object');
         }
