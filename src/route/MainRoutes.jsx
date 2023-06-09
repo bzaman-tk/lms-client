@@ -61,6 +61,14 @@ const routes = createBrowserRouter([
             {
                 path: 'manage-users',
                 element: <ManageUsers />
+            },
+            {
+                path: 'add-class',
+                element: <div>add class</div>
+            },
+            {
+                path: 'my-classes',
+                element: <div>my class</div>
             }
         ]
     }

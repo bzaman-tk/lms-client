@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../shared/SocialLogin';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import useAuth from '../../../hook/useAuth';
 
 const Login = () => {
-    const [show, setShow] = useState(false)
+    const [show, setShow] = useState(true)
+    const [error, setError] = useState('')
+    const navigate = useNavigate()
+    const { signIn } = useAuth()
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        setError('')
+        signIn(data.email, data.password)
+            .then(result => {
+                navigate('/dashboard')
+            })
+            .catch(e => setError(e.message))
+    };
 
     return (
         <div className="hero min-h-[500px] bg-gray-100 py-10">
@@ -45,6 +56,7 @@ const Login = () => {
                                 {
                                     (errors.email || errors.password) && <span>This field is required</span>
                                 }
+                                {error}
                             </p>
                             <p className='mt-3 text-center'>Don't have an ID? <Link className='text-blue-500' to='/register'>Register</Link></p>
                         </form>
