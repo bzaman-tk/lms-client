@@ -11,7 +11,7 @@ const ManageUsers = () => {
             return res.json();
         },
     })
-    handleAction = (type, id) => {
+    const handleAction = (type, id) => {
         fetch(`http://localhost:5000/all-users/${id}`, {
             method: 'PATCH',
             headers: {
