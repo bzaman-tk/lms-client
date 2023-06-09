@@ -4,11 +4,10 @@ import useAuth from '../../../hook/useAuth';
 
 const AddClass = () => {
     const { user } = useAuth()
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const imgHost = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_img_hosting_key}`
     const onSubmit = data => {
-        data.instractorEmail = user?.email
-        data.instractorName = user?.displayName
+        data.instructor = user?.email
         const formData = new FormData()
         formData.append('image', data.photo[0])
         fetch(imgHost, {
@@ -19,7 +18,7 @@ const AddClass = () => {
             .then(img => {
                 if (img.success) {
                     data.photo = img.data.display_url
-                    console.log(data);
+                    // console.log(data);
                     fetch(`http://localhost:5000/add-class`, {
                         method: 'POST',
                         headers: {
@@ -27,6 +26,13 @@ const AddClass = () => {
                         },
                         body: JSON.stringify(data)
                     })
+                        .then(res => res.json())
+                        .then(result => {
+                            if (result.insertedId) {
+                                alert('class added')
+                                reset()
+                            }
+                        })
                 }
             })
         // console.log(data.photo);
@@ -40,7 +46,7 @@ const AddClass = () => {
                     <p>Class Name</p>
                     <input placeholder="Class Name"
                         className='px-3 py-2 text-lg border'
-                        {...register("courseName", { required: true })} />
+                        {...register("name", { required: true })} />
                     <p>Class Image</p>
                     <input type='file'
                         {...register("photo", { required: true })} />
