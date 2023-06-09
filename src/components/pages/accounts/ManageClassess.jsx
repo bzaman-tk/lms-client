@@ -12,21 +12,20 @@ const ManageClassess = () => {
     })
     // console.log(classes);
     const handleAction = (type, id) => {
-        if (type === 'approved') {
-            fetch(`http://localhost:5000/classes/${id}`, {
-                method: 'PATCH',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify({ status: 'approved' })
+        fetch(`http://localhost:5000/classes/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ status: type })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch()
+                    console.log('status updated to Approved');
+                }
             })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                })
-        } else {
-            console.log('object');
-        }
     }
     return (
         <div className='container mx-auto my-8'>
