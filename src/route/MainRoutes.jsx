@@ -12,6 +12,7 @@ import ManageClassess from "../components/pages/accounts/ManageClassess";
 import Feedback from "../components/pages/accounts/Feedback";
 import ManageUsers from "../components/pages/accounts/ManageUsers";
 import MyClasses from "../components/pages/accounts/MyClasses";
+import AddClass from "../components/pages/accounts/AddClass";
 
 const routes = createBrowserRouter([
     {
@@ -65,7 +66,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: 'add-class',
-                element: <div>add class</div>
+                element: <AddClass />
             },
             {
                 path: 'my-classes',
