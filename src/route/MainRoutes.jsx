@@ -50,6 +50,11 @@ const routes = createBrowserRouter([
             {
                 path: 'classes',
                 element: <ManageClassess />
+            },
+            {
+                path: 'feedback/:id',
+                element: <div>feedback</div>,
+                loader: ({ params }) => fetch(`http://localhost:5000/feedback/${params.id}`)
             }
         ]
     }

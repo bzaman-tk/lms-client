@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ManageClassCard = ({ course, index, handleAction }) => {
     const { _id, name, photo, price, seats, instructor, enroll, status } = course
@@ -29,7 +30,7 @@ const ManageClassCard = ({ course, index, handleAction }) => {
             <th className='text-right'>
                 <button onClick={() => handleAction('approved', _id)} disabled={status ? (status === 'approved' || status === 'denied') && true : false} className="btn bg-green-600 border-0 btn-xs">Approve</button>
                 <button onClick={() => handleAction('denied', _id)} disabled={status ? (status === 'approved' || status === 'denied') && true : false} className="btn mx-1 my-px bg-red-600 border-0  btn-xs">Deny</button>
-                <button className="btn btn-xs border-0 hover:bg-gray-300 hover:text-black">Feebback</button>
+                <Link to={`/dashboard/feedback/${_id}`} className="btn btn-xs border-0 hover:bg-gray-300 hover:text-black">Feebback</Link>
             </th>
         </tr>
     );
