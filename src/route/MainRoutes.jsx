@@ -8,6 +8,7 @@ import Instructors from "../components/pages/Instructors";
 import Classes from "../components/pages/Classes";
 import Dashboard from "../layouts/Dashboard";
 import Account from "../components/pages/accounts/Account";
+import ManageClassess from "../components/pages/accounts/ManageClassess";
 
 const routes = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ const routes = createBrowserRouter([
             {
                 index: true,
                 element: <Account />
+            },
+            {
+                path: 'classes',
+                element: <ManageClassess />
             }
         ]
     }
