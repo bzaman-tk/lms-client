@@ -10,7 +10,14 @@ const ManageClassess = () => {
             return res.json();
         },
     })
-    console.log(classes);
+    // console.log(classes);
+    const handleAction = (type, id) => {
+        if (type === 'approved') {
+            console.log('objectobject');
+        } else {
+            console.log('object');
+        }
+    }
     return (
         <div className='container mx-auto my-8'>
             <h2 className="text-4xl font-bold text-center uppercase mb-12">manage classes</h2>
@@ -32,7 +39,15 @@ const ManageClassess = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <ManageClassCard />
+                        {
+                            classes && classes.map((course, index) =>
+                                <ManageClassCard
+                                    handleAction={handleAction}
+                                    course={course}
+                                    index={index}
+                                    key={course._id} />
+                            )
+                        }
                     </tbody>
 
                 </table>
