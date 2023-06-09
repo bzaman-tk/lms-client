@@ -7,7 +7,7 @@ const DashboardSidebar = () => {
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/dashboard'>Dashboard</Link></li>
             <li><Link to='/dashboard/classes'>Manage Classes</Link></li>
-            <li><Link to='/dashboard/users'>Manage Users</Link></li>
+            <li><Link to='/dashboard/manage-users'>Manage Users</Link></li>
         </>
     );
 };

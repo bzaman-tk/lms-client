@@ -10,6 +10,7 @@ import Dashboard from "../layouts/Dashboard";
 import Account from "../components/pages/accounts/Account";
 import ManageClassess from "../components/pages/accounts/ManageClassess";
 import Feedback from "../components/pages/accounts/Feedback";
+import ManageUsers from "../components/pages/accounts/ManageUsers";
 
 const routes = createBrowserRouter([
     {
@@ -56,6 +57,10 @@ const routes = createBrowserRouter([
                 path: 'feedback/:id',
                 element: <Feedback />,
                 loader: ({ params }) => fetch(`http://localhost:5000/feedback/${params.id}`)
+            },
+            {
+                path: 'manage-users',
+                element: <ManageUsers />
             }
         ]
     }

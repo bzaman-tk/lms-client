@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
+import FeedbackUpdata from './FeedbackUpdata';
 
 const Feedback = () => {
     const { id } = useParams()
@@ -40,9 +41,7 @@ const Feedback = () => {
     }
 
     return (
-        <div className='container mx-auto'>
-            <h1 className="text-3xl">flasdjflak;fja</h1>
-        </div>
+        <FeedbackUpdata data={data} id={id} />
     );
 };
 
