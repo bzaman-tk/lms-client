@@ -13,6 +13,11 @@ import Feedback from "../components/pages/accounts/Feedback";
 import ManageUsers from "../components/pages/accounts/ManageUsers";
 import MyClasses from "../components/pages/accounts/MyClasses";
 import AddClass from "../components/pages/accounts/AddClass";
+import PrivateRoutes from "./PrivateRoutes";
+import Payment from "../components/payment/Payment";
+import History from "../components/payment/History";
+import AdminRoute from "./AdminRoute";
+import InstractorRoute from "./InstractorRoute";
 
 const routes = createBrowserRouter([
     {
@@ -44,7 +49,7 @@ const routes = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <Dashboard />,
+        element: <PrivateRoutes><Dashboard /></PrivateRoutes>,
         errorElement: <ErrorPage />,
         children: [
             {
@@ -53,7 +58,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: 'classes',
-                element: <ManageClassess />
+                element: <AdminRoute><ManageClassess /></AdminRoute>
             },
             {
                 path: 'feedback/:id',
@@ -62,15 +67,23 @@ const routes = createBrowserRouter([
             },
             {
                 path: 'manage-users',
-                element: <ManageUsers />
+                element: <AdminRoute><ManageUsers /></AdminRoute>
             },
             {
                 path: 'add-class',
-                element: <AddClass />
+                element: <InstractorRoute><AddClass /></InstractorRoute>
             },
             {
                 path: 'my-classes',
-                element: <MyClasses />
+                element: <InstractorRoute><MyClasses /></InstractorRoute>
+            },
+            {
+                path: 'payment',
+                element: <Payment />
+            },
+            {
+                path: 'history',
+                element: <History />
             }
         ]
     }

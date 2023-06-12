@@ -1,22 +1,22 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import ClassCard from '../shared/ClassCard';
-import useAuth from '../../hook/useAuth';
+import ClassCard from './ClassCard';
 import useSelected from '../../hook/useSelected';
 import useEnrolled from '../../hook/useEnrolled';
+import useAuth from '../../hook/useAuth';
 
-const Classes = () => {
+const PopularClasses = () => {
     const { user, loading } = useAuth()
     const isSelected = useSelected()
     const isEnrolled = useEnrolled()
     const { isLoading, isError, data: classes = [], refetch } = useQuery({
-        queryKey: ['classes'],
+        queryKey: ['pclasses'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/classes')
+            const res = await fetch('http://localhost:5000/classes/popular')
             return res.json();
         },
     })
-    // console.log(isSelected);
+    // console.log(classes)
     const handleAction = id => {
         if (!user) {
             alert('please login')
@@ -39,19 +39,17 @@ const Classes = () => {
             })
     }
     return (
-        <div className='container mx-auto my-12'>
-            <h2 className="text-3xl font-bold text-center uppercase mb-8">Our Classes</h2>
-            <div className="grid grid-cols-4 gap-10">
+        <div className='container mx-auto mt-12'>
+            <h2 className="text-3xl font-bold text-center uppercase mb-8">Popular Classes</h2>
+            <div className="grid grid-cols-4 justify-center gap-12 w-10/12 mx-auto">
                 {
-                    classes && classes.map(
-                        cls => // Can't use name 'class' cz it's reserved :P 
-                            <ClassCard
-                                handleAction={handleAction}
-                                isSelected={isSelected.includes(cls._id)}
-                                isEnrolled={isEnrolled.includes(cls._id)}
-                                cls={cls}
-                                key={cls._id} />
-                        // console.log(cls._id, isSelected.id);
+                    classes && classes.map(course =>
+                        <ClassCard
+                            handleAction={handleAction}
+                            isSelected={isSelected.includes(course._id)}
+                            isEnrolled={isEnrolled.includes(course._id)}
+                            cls={course}
+                            key={course._id} />
                     )
                 }
             </div>
@@ -59,4 +57,4 @@ const Classes = () => {
     );
 };
 
-export default Classes;
+export default PopularClasses;

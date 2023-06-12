@@ -12,7 +12,7 @@ const MyClasses = () => {
             return res.json();
         },
     })
-    console.log(classes);
+    // console.log(classes);
     return (
         <div className="container mx-auto my-8">
             <h2 className="text-2xl font-bold text-center uppercase mb-5">My Classes</h2>

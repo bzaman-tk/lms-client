@@ -21,7 +21,7 @@ const SocialLogin = () => {
                     .then(res => res.json())
                     .then(data => {
                         //if (data.insertedId) {
-                        navigate('/')
+                        navigate('/dashboard')
                         // }
                     })
             })

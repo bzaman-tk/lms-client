@@ -1,21 +1,23 @@
 import React from 'react';
 import ManageUserCard from '../../shared/ManageUserCard';
 import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from '../../../hook/useAxiosSecure';
 
 const ManageUsers = () => {
-
+    const [axiosSecure] = useAxiosSecure()
     const { isLoading, data: users = [], refetch } = useQuery({
         queryKey: ['manageusers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/all-users')
-            return res.json();
+            const res = await axiosSecure.get('http://localhost:5000/all-users')
+            return res.data;
         },
     })
     const handleAction = (type, id) => {
         fetch(`http://localhost:5000/all-users/${id}`, {
             method: 'PATCH',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('access-token')}`,
             },
             body: JSON.stringify({ role: type })
         })
