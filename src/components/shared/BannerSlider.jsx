@@ -14,16 +14,16 @@ const BannerSlider = () => {
                 navigation={true}
                 loop={true}
                 autoplay={{
-                    delay: 1000,
+                    delay: 2000,
                     disableOnInteraction: false,
                 }}
                 modules={[Navigation, Autoplay]}
-                className="mySwiper">
+                className="mySwiper dark:bg-gray-800 dark:text-gray-500">
                 <SwiperSlide>
                     <div className="container mx-auto h-[550px]">
                         <div className="flex justify-center items-center">
                             <div className="w-1/2">
-                                <h1 className="text-slate-900 text-4xl font-bold uppercase">Learn English with a <br /> method that really works</h1>
+                                <h1 className="text-slate-900 text-4xl font-bold uppercase dark:text-white">Learn English with a <br /> method that really works</h1>
                                 <p className="text-lg my-5">Learn English with our effective methodology</p>
                                 <button className="btn">See More</button>
                             </div>
@@ -37,8 +37,8 @@ const BannerSlider = () => {
                     <div className="container mx-auto h-[550px]">
                         <div className="flex justify-center items-center h-full">
                             <div className="w-1/2">
-                                <h1 className="text-slate-900 text-4xl font-bold">
-                                    LEARNING ENGLISH - <br /> INVESTING IN YOUR FUTURE
+                                <h1 className="text-slate-900 text-4xl font-bold uppercase dark:text-white">
+                                    To have another language <br /> is to possess a second soul.
                                 </h1>
                                 <p className="text-lg my-5">Our language programs at SUMMER TIME CAMPS have been attracting the attention of children and parents for over 29 years.</p>
                                 <button className="btn">See More</button>

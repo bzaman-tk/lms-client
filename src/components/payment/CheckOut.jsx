@@ -17,7 +17,8 @@ const CheckOut = ({ price, id }) => {
         fetch(`http://localhost:5000/create-payment-intent`, {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('access-token')}`,
             },
             body: JSON.stringify({ price })
         })
@@ -76,7 +77,8 @@ const CheckOut = ({ price, id }) => {
             fetch('http://localhost:5000/payments', {
                 method: 'POST',
                 headers: {
-                    'content-type': 'application/json'
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('access-token')}`,
                 },
                 body: JSON.stringify(data)
             })

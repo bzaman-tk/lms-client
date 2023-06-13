@@ -63,7 +63,13 @@ const routes = createBrowserRouter([
             {
                 path: 'feedback/:id',
                 element: <Feedback />,
-                loader: ({ params }) => fetch(`http://localhost:5000/feedback/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/feedback/${params.id}`, {
+                    method: 'GET',
+                    headers: {
+                        'content-type': 'application/json',
+                        'authorization': `Bearer ${localStorage.getItem('access-token')}`,
+                    }
+                })
             },
             {
                 path: 'manage-users',

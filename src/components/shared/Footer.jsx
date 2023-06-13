@@ -1,10 +1,10 @@
 import logo from '../../assets/logo-w.jpg';
 const Footer = () => {
     return (
-        <footer className="footer footer-center p-10 bg-gray-200 text-gray-900 mt-12">
+        <footer className="footer footer-center p-10 bg-gray-200 text-gray-900  dark:bg-gray-800 dark:text-gray-300">
             <div>
                 <img className='rounded-lg' src={logo} alt="" />
-                <p className="text-lg">
+                <p className="text-lg pt-5">
                     <strong>Email: </strong>example@gmail.com <br />
                     <strong>Phone: </strong>+880 123 456 7891, +880 123 456 7891 <br />
                     <strong>Address: </strong>Habigonj, Sylhet, Bangladesh

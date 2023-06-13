@@ -1,4 +1,4 @@
-import { AiFillHome, AiOutlineDashboard, AiOutlineDollar, AiOutlineHome } from 'react-icons/ai';
+import { AiFillHome, AiOutlineAudit, AiOutlineDashboard, AiOutlineDollar, AiOutlineFileMarkdown, AiOutlineHome, AiOutlinePlusCircle, AiOutlineTeam } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hook/useAuth';
 import useRole from '../../hook/useRole';
@@ -22,12 +22,20 @@ const DashboardSidebar = () => {
                     </Link></li></>
             }
             {isAdmin && <>
-                <li><Link to='/dashboard/classes'>Manage Classes</Link></li>
-                <li><Link to='/dashboard/manage-users'>Manage Users</Link></li>
+                <li><Link to='/dashboard/classes'>
+                    <AiOutlineAudit className='text-3xl' /> Manage Classes
+                </Link></li>
+                <li><Link to='/dashboard/manage-users'>
+                    <AiOutlineTeam className='text-3xl' /> Manage Users
+                </Link></li>
             </>}
             {isInstractor && <>
-                <li><Link to='/dashboard/add-class'>Add A Class</Link></li>
-                <li><Link to='/dashboard/my-classes'>My Classes</Link></li>
+                <li><Link to='/dashboard/add-class'>
+                    <AiOutlinePlusCircle className='text-3xl' /> Add A Class
+                </Link></li>
+                <li><Link to='/dashboard/my-classes'>
+                    <AiOutlineFileMarkdown className='text-3xl' /> My Classes
+                </Link></li>
             </>}
             {
                 user && <>

@@ -18,7 +18,9 @@ const AddClass = () => {
             .then(img => {
                 if (img.success) {
                     data.photo = img.data.display_url
-                    // console.log(data);
+                    data.seats = parseInt(data.seats)
+                    data.price = parseInt(data.price)
+                    console.log(data);
                     fetch(`http://localhost:5000/add-class`, {
                         method: 'POST',
                         headers: {

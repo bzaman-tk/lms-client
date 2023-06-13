@@ -8,7 +8,13 @@ const MySelectedClasses = () => {
     const { isLoading, isError, data: selected = [], refetch } = useQuery({
         queryKey: ['sclass', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/classes/selected/${user?.email}`)
+            const res = await fetch(`http://localhost:5000/classes/selected/${user?.email}`, {
+                method: 'GET',
+                headers: {
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('access-token')}`,
+                }
+            })
             return res.json();
         },
     })
@@ -18,7 +24,8 @@ const MySelectedClasses = () => {
         fetch('http://localhost:5000/classes/selected', {
             method: 'DELETE',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('access-token')}`,
             },
             body: JSON.stringify({ email: user?.email, courseID: id })
         })

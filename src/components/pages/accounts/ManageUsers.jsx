@@ -25,7 +25,7 @@ const ManageUsers = () => {
             .then(data => {
                 if (data.modifiedCount) {
                     refetch()
-                    console.log('status updated to Approved');
+                    alert('status updated to Approved');
                 }
             })
     }

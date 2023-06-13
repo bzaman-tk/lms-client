@@ -3,6 +3,7 @@ import React from 'react';
 import useRole from '../../hook/useRole';
 import useSelected from '../../hook/useSelected';
 import useAuth from '../../hook/useAuth';
+import { Rotate } from "react-awesome-reveal";
 
 const ClassCard = ({ cls, handleAction, isSelected, isEnrolled }) => {
     const { user, loading } = useAuth()
@@ -11,7 +12,7 @@ const ClassCard = ({ cls, handleAction, isSelected, isEnrolled }) => {
     //const [isSelected] = useSelected(_id)
     // console.log(_id);
     const { isLoading, isError, data: instructorInfo = [], error } = useQuery({
-        queryKey: ['instructorInfo'],
+        queryKey: ['instructorInfo', instructor],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/users/instructors/${instructor}`)
             return res.json();
@@ -20,9 +21,11 @@ const ClassCard = ({ cls, handleAction, isSelected, isEnrolled }) => {
     // console.log(instructorInfo)
     return (
         <div className={`card  bg-gray-100 border shadow-xl ${(seats === 0 || (seats - enroll?.length) === 0) && 'bg-red-600 text-white'
-            }`}>
+            } dark:bg-slate-800 dark:text-gray-300 dark:border-gray-900`}>
             <figure>
-                <img src={photo} alt="" />
+                <Rotate className='w-full'>
+                    <img className='h-52 w-full' src={photo} alt="" />
+                </Rotate>
             </figure>
             <div className="card-body">
                 <h2 className="card-title"> {name}</h2>

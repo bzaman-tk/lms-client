@@ -21,9 +21,9 @@ const Login = () => {
     };
 
     return (
-        <div className="hero min-h-[500px] bg-gray-100 py-10">
+        <div className="hero min-h-[500px] bg-gray-100 py-12 dark:bg-gray-700">
             <div className="hero-content flex-col w-full">
-                <h1 className="text-3xl font-bold pb-5">Please Login now!</h1>
+                <h1 className="text-3xl font-bold pb-5 dark:text-gray-300">Please Login now!</h1>
                 <div className="card shadow-2xl bg-base-100 w-full max-w-md">
                     <div className="card-body">
                         <form onSubmit={handleSubmit(onSubmit)}>

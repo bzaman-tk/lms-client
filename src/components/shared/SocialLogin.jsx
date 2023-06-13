@@ -16,7 +16,11 @@ const SocialLogin = () => {
                     headers: {
                         'content-type': 'application/json'
                     },
-                    body: JSON.stringify({ name: result.user.displayName, email: result.user.email })
+                    body: JSON.stringify({
+                        name: result.user.displayName,
+                        email: result.user.email,
+                        photo: result.user.photoURL
+                    })
                 })
                     .then(res => res.json())
                     .then(data => {

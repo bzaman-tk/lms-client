@@ -14,5 +14,15 @@
 7. amdin can add feedback to classes
 8. admin can make a user instractor/admin
 
+## Used packages / technology
+
+1. stripe - For take payments
+2. Tanstack/react-query - For querying and cashing mamagment
+3. Axios - For Calling APIs very easyliy 
+4. Daisyui - For UI elements/Components
+5. Firebase - Authentication
+7. React-icons - For Beautiful Icons
+
+
 
 ## You can visit to [See Live Here](https://learn-foreign-language.web.app/)

@@ -25,7 +25,8 @@ const Classes = () => {
         fetch('http://localhost:5000/classes/selected', {
             method: "PATCH",
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('access-token')}`,
             },
             body: JSON.stringify({ email: user?.email, id })
         })
@@ -40,7 +41,7 @@ const Classes = () => {
     }
     return (
         <div className='container mx-auto my-12'>
-            <h2 className="text-3xl font-bold text-center uppercase mb-8">Our Classes</h2>
+            <h2 className="text-3xl font-bold text-center uppercase mb-8 dark:text-gray-300">Our Classes</h2>
             <div className="grid grid-cols-4 gap-10">
                 {
                     classes && classes.map(

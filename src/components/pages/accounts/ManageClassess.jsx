@@ -17,7 +17,8 @@ const ManageClassess = () => {
         fetch(`http://localhost:5000/classes/${id}`, {
             method: 'PATCH',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('access-token')}`,
             },
             body: JSON.stringify({ status: type })
         })
@@ -25,7 +26,7 @@ const ManageClassess = () => {
             .then(data => {
                 if (data.modifiedCount) {
                     refetch()
-                    console.log('status updated to Approved');
+                    alert('status updated to Approved');
                 }
             })
     }
