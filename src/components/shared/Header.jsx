@@ -24,6 +24,16 @@ const Header = () => {
                             {
                                 navItems
                             }
+                            {
+                                user ?
+                                    <><Link to='/dashboard'>
+                                        <img className='w-10 h-10 rounded-full mx-auto' src={user?.photoURL} alt={user?.displayName} />
+                                    </Link>
+                                        <button onClick={() => logOut()} className="btn ml-3">Logout</button>
+                                    </>
+                                    :
+                                    <Link to='/login' className='btn'>Login</Link>
+                            }
                         </ul>
                     </div>
                     <Link to='/' className="normal-case text-xl">
