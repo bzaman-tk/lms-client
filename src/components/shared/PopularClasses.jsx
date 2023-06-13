@@ -4,11 +4,13 @@ import ClassCard from './ClassCard';
 import useSelected from '../../hook/useSelected';
 import useEnrolled from '../../hook/useEnrolled';
 import useAuth from '../../hook/useAuth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Bounce } from "react-awesome-reveal";
+import Swal from 'sweetalert2';
 
 const PopularClasses = () => {
     const { user, loading } = useAuth()
+    const navigate = useNavigate()
     const isSelected = useSelected()
     const isEnrolled = useEnrolled()
     const { isLoading, isError, data: classes = [], refetch } = useQuery({
@@ -21,7 +23,19 @@ const PopularClasses = () => {
     // console.log(classes)
     const handleAction = id => {
         if (!user) {
-            alert('please login')
+            Swal.fire({
+                title: 'Please Login',
+                text: "You need to login to select classes",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Login'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login')
+                }
+            })
             return;
         }
         fetch('https://summer-camp-server-liard.vercel.app/classes/selected', {
@@ -37,7 +51,11 @@ const PopularClasses = () => {
                 // console.log(data);
                 if (data.modifiedCount) {
                     refetch()
-                    alert('Enrolled SuccsFully')
+                    Swal.fire(
+                        'Done!',
+                        ' ',
+                        'success'
+                    )
                 }
             })
     }

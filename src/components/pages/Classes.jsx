@@ -4,9 +4,12 @@ import ClassCard from '../shared/ClassCard';
 import useAuth from '../../hook/useAuth';
 import useSelected from '../../hook/useSelected';
 import useEnrolled from '../../hook/useEnrolled';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const Classes = () => {
     const { user, loading } = useAuth()
+    const navigate = useNavigate()
     const isSelected = useSelected()
     const isEnrolled = useEnrolled()
     const { isLoading, isError, data: classes = [], refetch } = useQuery({
@@ -19,7 +22,19 @@ const Classes = () => {
     // console.log(isSelected);
     const handleAction = id => {
         if (!user) {
-            alert('please login')
+            Swal.fire({
+                title: 'Please Login',
+                text: "You need to login to select classes",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Login'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    navigate('/login')
+                }
+            })
             return;
         }
         fetch('https://summer-camp-server-liard.vercel.app/classes/selected', {
@@ -35,7 +50,11 @@ const Classes = () => {
                 // console.log(data);
                 if (data.modifiedCount) {
                     refetch()
-                    alert('Enrolled SuccsFully')
+                    Swal.fire(
+                        'Selected',
+                        'Your Class has been selected.',
+                        'success'
+                    )
                 }
             })
     }

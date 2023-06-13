@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../hook/useAuth';
+import Swal from 'sweetalert2';
 
 const AddClass = () => {
     const { user } = useAuth()
@@ -32,7 +33,11 @@ const AddClass = () => {
                         .then(res => res.json())
                         .then(result => {
                             if (result.insertedId) {
-                                alert('class added')
+                                Swal.fire(
+                                    'DONE!',
+                                    'Your Class has been send for aproval.',
+                                    'success'
+                                )
                                 reset()
                             }
                         })

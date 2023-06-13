@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const FeedbackUpdata = ({ data, id }) => {
     const navigate = useNavigate()
@@ -17,7 +18,11 @@ const FeedbackUpdata = ({ data, id }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
-                    alert('feedback sent')
+                    Swal.fire(
+                        'Done!',
+                        'Your Feedback has been saved.',
+                        'success'
+                    )
                     navigate('/dashboard/classes')
                 }
             })

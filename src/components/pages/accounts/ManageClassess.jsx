@@ -2,6 +2,7 @@ import React from 'react';
 import ManageClassCard from '../../shared/ManageClassCard';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../hook/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 const ManageClassess = () => {
     const [axiosSecure] = useAxiosSecure()
@@ -26,7 +27,11 @@ const ManageClassess = () => {
             .then(data => {
                 if (data.modifiedCount) {
                     refetch()
-                    alert('status updated to Approved');
+                    Swal.fire(
+                        'Done!',
+                        'The Status Updated',
+                        'success'
+                    )
                 }
             })
     }

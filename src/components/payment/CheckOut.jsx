@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useEffect, useState } from 'react';
 import useAuth from '../../hook/useAuth';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const CheckOut = ({ price, id }) => {
     const { user } = useAuth()
@@ -85,10 +86,18 @@ const CheckOut = ({ price, id }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.payment.insertedId && data.updateEnroll.modifiedCount && data.result.modifiedCount) {
-                        alert('Congretz!!')
+                        Swal.fire(
+                            'Done!',
+                            'Payment Done',
+                            'success'
+                        )
                         navigate('/dashboard')
                     } else {
-                        alert('Somming wrong')
+                        Swal.fire(
+                            'Error!',
+                            'Somthing went Wrong',
+                            'error'
+                        )
                     }
                 })
         } else {

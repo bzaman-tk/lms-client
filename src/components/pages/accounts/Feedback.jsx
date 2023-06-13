@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import FeedbackUpdata from './FeedbackUpdata';
+import Swal from 'sweetalert2';
 
 const Feedback = () => {
     const { id } = useParams()
@@ -20,7 +21,11 @@ const Feedback = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount) {
-                    alert('feedback sent')
+                    Swal.fire(
+                        'Done!',
+                        'Your Feedback has been saved.',
+                        'success'
+                    )
                     navigate('/dashboard/classes')
                 }
             })
