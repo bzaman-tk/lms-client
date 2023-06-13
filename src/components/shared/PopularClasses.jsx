@@ -14,7 +14,7 @@ const PopularClasses = () => {
     const { isLoading, isError, data: classes = [], refetch } = useQuery({
         queryKey: ['pclasses'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/classes/popular')
+            const res = await fetch('https://summer-camp-server-liard.vercel.app/classes/popular')
             return res.json();
         },
     })
@@ -24,7 +24,7 @@ const PopularClasses = () => {
             alert('please login')
             return;
         }
-        fetch('http://localhost:5000/classes/selected', {
+        fetch('https://summer-camp-server-liard.vercel.app/classes/selected', {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json',
@@ -44,7 +44,7 @@ const PopularClasses = () => {
     return (
         <div className='container mx-auto py-12'>
             <h2 className="text-3xl font-bold text-center uppercase mb-12 dark:text-gray-300">Popular Classes</h2>
-            <div className="grid grid-cols-3 justify-center gap-12 w-10/12 mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-3 justify-center gap-12 w-10/12 mx-auto">
                 {
                     classes && classes.map(course =>
                         <ClassCard

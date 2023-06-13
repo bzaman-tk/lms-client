@@ -17,7 +17,7 @@ const Register = () => {
         }
         createUser(data.email, data.password)
             .then(result => {
-                fetch('http://localhost:5000/users', {
+                fetch('https://summer-camp-server-liard.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

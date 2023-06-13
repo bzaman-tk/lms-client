@@ -8,7 +8,7 @@ const MyClasses = () => {
     const { isLoading, data: classes = [], refetch } = useQuery({
         queryKey: ['myclasses', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/all-classes/${user?.email}`, {
+            const res = await fetch(`https://summer-camp-server-liard.vercel.app/all-classes/${user?.email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json',

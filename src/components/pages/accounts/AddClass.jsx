@@ -21,7 +21,7 @@ const AddClass = () => {
                     data.seats = parseInt(data.seats)
                     data.price = parseInt(data.price)
                     console.log(data);
-                    fetch(`http://localhost:5000/add-class`, {
+                    fetch(`https://summer-camp-server-liard.vercel.app/add-class`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

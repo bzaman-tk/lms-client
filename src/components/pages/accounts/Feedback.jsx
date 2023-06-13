@@ -9,7 +9,7 @@ const Feedback = () => {
     const navigate = useNavigate()
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
-        fetch(`http://localhost:5000/feedback/${id}`, {
+        fetch(`https://summer-camp-server-liard.vercel.app/feedback/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',

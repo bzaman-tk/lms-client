@@ -8,13 +8,13 @@ const ManageClassess = () => {
     const { isLoading, data: classes = [], refetch } = useQuery({
         queryKey: ['manageclasse'],
         queryFn: async () => {
-            const res = await axiosSecure.get('http://localhost:5000/all-classes')
+            const res = await axiosSecure.get('https://summer-camp-server-liard.vercel.app/all-classes')
             return res.data;
         },
     })
     // console.log(classes);
     const handleAction = (type, id) => {
-        fetch(`http://localhost:5000/classes/${id}`, {
+        fetch(`https://summer-camp-server-liard.vercel.app/classes/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',

@@ -14,7 +14,7 @@ const CheckOut = ({ price, id }) => {
     const [processing, setProcessing] = useState(false)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/create-payment-intent`, {
+        fetch(`https://summer-camp-server-liard.vercel.app/create-payment-intent`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -74,7 +74,7 @@ const CheckOut = ({ price, id }) => {
                 transactionId: paymentIntent.id,
                 date: new Date(),
             }
-            fetch('http://localhost:5000/payments', {
+            fetch('https://summer-camp-server-liard.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

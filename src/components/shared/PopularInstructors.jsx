@@ -8,7 +8,7 @@ const PopularInstructors = () => {
     const { isLoading, isError, data: instractor = [], error } = useQuery({
         queryKey: ['pinstractor'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/instractors/popular')
+            const res = await fetch('https://summer-camp-server-liard.vercel.app/instractors/popular')
             return res.json();
         },
     })
@@ -18,7 +18,7 @@ const PopularInstructors = () => {
             <div className='container mx-auto py-12 '>
                 <h2 className="text-3xl font-bold text-center uppercase mb-12 dark:text-gray-300">Popular Instructors</h2>
 
-                <div className="grid grid-cols-3 gap-12 w-10/12 mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 w-10/12 mx-auto">
                     {
                         instractor && instractor.map(ins =>
                             <InstructorCard

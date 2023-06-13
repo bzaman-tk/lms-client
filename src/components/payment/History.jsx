@@ -7,7 +7,7 @@ const History = () => {
         queryKey: ['history', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/payment-history/${user?.email}`, {
+            const res = await fetch(`https://summer-camp-server-liard.vercel.app/payment-history/${user?.email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json',

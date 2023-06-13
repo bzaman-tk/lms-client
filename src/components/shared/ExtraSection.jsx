@@ -6,7 +6,7 @@ const ExtraSection = () => {
             <Slide>
                 <h1 className="text-3xl font-bold text-center mb-8 dark:text-gray-300">Our Happy Students</h1>
             </Slide>
-            <div className="grid grid-cols-3 gap-12 w-10/12 mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 w-10/12 mx-auto">
                 <Zoom>
                     <div className="border p-5 rounded-md dark:bg-gray-800 dark:text-gray-400">
                         <div className="">

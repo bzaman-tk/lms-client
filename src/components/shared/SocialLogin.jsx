@@ -11,7 +11,7 @@ const SocialLogin = () => {
         setError({})
         googleLogin()
             .then(result => {
-                fetch('http://localhost:5000/users', {
+                fetch('https://summer-camp-server-liard.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

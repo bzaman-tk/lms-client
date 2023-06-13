@@ -8,7 +8,7 @@ const MySelectedClasses = () => {
     const { isLoading, isError, data: selected = [], refetch } = useQuery({
         queryKey: ['sclass', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/classes/selected/${user?.email}`, {
+            const res = await fetch(`https://summer-camp-server-liard.vercel.app/classes/selected/${user?.email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json',
@@ -21,7 +21,7 @@ const MySelectedClasses = () => {
     // console.log(selected)
     const handleAction = id => {
         // console.log(id)
-        fetch('http://localhost:5000/classes/selected', {
+        fetch('https://summer-camp-server-liard.vercel.app/classes/selected', {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',

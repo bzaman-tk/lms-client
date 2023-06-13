@@ -14,7 +14,7 @@ const ClassCard = ({ cls, handleAction, isSelected, isEnrolled }) => {
     const { isLoading, isError, data: instructorInfo = [], error } = useQuery({
         queryKey: ['instructorInfo', instructor],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/instructors/${instructor}`)
+            const res = await fetch(`https://summer-camp-server-liard.vercel.app/users/instructors/${instructor}`)
             return res.json();
         },
     })

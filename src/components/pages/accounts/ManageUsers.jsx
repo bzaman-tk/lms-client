@@ -8,12 +8,12 @@ const ManageUsers = () => {
     const { isLoading, data: users = [], refetch } = useQuery({
         queryKey: ['manageusers'],
         queryFn: async () => {
-            const res = await axiosSecure.get('http://localhost:5000/all-users')
+            const res = await axiosSecure.get('https://summer-camp-server-liard.vercel.app/all-users')
             return res.data;
         },
     })
     const handleAction = (type, id) => {
-        fetch(`http://localhost:5000/all-users/${id}`, {
+        fetch(`https://summer-camp-server-liard.vercel.app/all-users/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',

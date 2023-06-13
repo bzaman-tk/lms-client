@@ -12,7 +12,7 @@ const Classes = () => {
     const { isLoading, isError, data: classes = [], refetch } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/classes')
+            const res = await fetch('https://summer-camp-server-liard.vercel.app/classes')
             return res.json();
         },
     })
@@ -22,7 +22,7 @@ const Classes = () => {
             alert('please login')
             return;
         }
-        fetch('http://localhost:5000/classes/selected', {
+        fetch('https://summer-camp-server-liard.vercel.app/classes/selected', {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json',

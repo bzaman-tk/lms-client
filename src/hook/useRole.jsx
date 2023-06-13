@@ -7,7 +7,7 @@ const useRole = () => {
         queryKey: ['role', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/user/role/${user?.email}`, {
+            const res = await fetch(`https://summer-camp-server-liard.vercel.app/user/role/${user?.email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json',
