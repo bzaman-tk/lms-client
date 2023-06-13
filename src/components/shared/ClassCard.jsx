@@ -22,9 +22,9 @@ const ClassCard = ({ cls, handleAction, isSelected, isEnrolled }) => {
     })
     // console.log(instructorInfo)
     return (
-        <div className={`card  bg-gray-100 border shadow-xl dark:bg-slate-800 
-        ${(seats === 0 || (seats - enroll?.length) === 0) &&
-            'bg-red-600 text-white dark:bg-red-500'
+        <div className={`card  bg-gray-100 border shadow-xl  
+        ${(seats === 0 || (seats - enroll?.length) === 0) ?
+                'bg-red-600 text-white dark:bg-red-500' : 'dark:bg-slate-800'
             } 
             dark:text-gray-300 dark:border-gray-900`}>
             <figure>
