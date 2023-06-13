@@ -25,6 +25,9 @@ const History = () => {
         hour: "numeric",
         minute: "numeric"
     };
+    if (isLoading) {
+        return <div className="h-screen w-1/2 mx-auto text-center flex justify-center items-center"><progress className="progress w-56"></progress></div>
+    }
     return (
         <div className='container mx-auto my-12'>
             <h2 className="text-3xl font-bold text-center uppercase mb-8">My Payment History</h2>

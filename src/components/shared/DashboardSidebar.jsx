@@ -19,7 +19,16 @@ const DashboardSidebar = () => {
                     {/* <li><Link to='/classes'>Classes</Link></li> */}
                     <li><Link to='/dashboard/history'>
                         <AiOutlineDollar className='text-3xl' /> Payment History
-                    </Link></li></>
+                    </Link></li>
+                    <li>
+                        <Link to='/dashboard/my-selected'>
+                            <AiOutlineFileMarkdown className='text-3xl' /> MY SELECTED CLASSES</Link>
+                    </li>
+                    <li>
+                        <Link to='/dashboard/my-enrolled'>
+                            <AiOutlineAudit className='text-3xl' /> MY ENROLLED CLASSES</Link>
+                    </li>
+                </>
             }
             {isAdmin && <>
                 <li><Link to='/dashboard/classes'>

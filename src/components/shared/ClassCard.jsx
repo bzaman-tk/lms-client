@@ -4,8 +4,10 @@ import useRole from '../../hook/useRole';
 import useSelected from '../../hook/useSelected';
 import useAuth from '../../hook/useAuth';
 import { Rotate } from "react-awesome-reveal";
+import { useState } from 'react';
 
 const ClassCard = ({ cls, handleAction, isSelected, isEnrolled }) => {
+    const [isClick, setIsClick] = useState(false)
     const { user, loading } = useAuth()
     const [isAdmin, isInstractor] = useRole()
     const { _id, name, photo, price, seats, instructor, enroll } = cls
@@ -20,8 +22,11 @@ const ClassCard = ({ cls, handleAction, isSelected, isEnrolled }) => {
     })
     // console.log(instructorInfo)
     return (
-        <div className={`card  bg-gray-100 border shadow-xl ${(seats === 0 || (seats - enroll?.length) === 0) && 'bg-red-600 text-white'
-            } dark:bg-slate-800 dark:text-gray-300 dark:border-gray-900`}>
+        <div className={`card  bg-gray-100 border shadow-xl dark:bg-slate-800 
+        ${(seats === 0 || (seats - enroll?.length) === 0) &&
+            'bg-red-600 text-white dark:bg-red-500'
+            } 
+            dark:text-gray-300 dark:border-gray-900`}>
             <figure>
                 <Rotate className='w-full'>
                     <img className='h-52 w-full' src={photo} alt="" />
@@ -36,11 +41,14 @@ const ClassCard = ({ cls, handleAction, isSelected, isEnrolled }) => {
                     }
                 </p>
                 <p><strong>Price:</strong> $ {price}</p>
-                <div className="card-actions justify-end">
+                <p><strong>Enrolled:</strong> {enroll && enroll?.length || '0'}</p>
+                <div onClick={() => {
+                    if (user) { setIsClick(true) }
+                }} className="card-actions justify-end">
                     <button
                         onClick={() => handleAction(_id)}
                         disabled={
-                            (isAdmin || isInstractor || isSelected || isEnrolled || seats === 0 || (seats - enroll?.length) === 0) && true
+                            (isClick || isAdmin || isInstractor || isSelected || isEnrolled || seats === 0 || (seats - enroll?.length) === 0) && true
                         }
                         className="btn btn-primary">Select</button>
                 </div>

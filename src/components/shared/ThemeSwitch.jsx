@@ -23,7 +23,7 @@ const ThemeSwitch = () => {
         }
     }, [theme])
 
-    console.log(theme);
+    // console.log(theme);
     const handleThemeSwitch = () => {
         localStorage.setItem('theme', (theme === "light") ? 'dark' : 'light')
         setTheme(theme === "dark" ? "light" : "dark")

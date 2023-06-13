@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 const SelectedClassCard = ({ cls, index, handleAction }) => {
+    const [isClick, setIsClick] = useState(false)
     const { _id, name, photo, price, seats, instructor, enroll } = cls
     return (
         <tr>
@@ -15,7 +17,15 @@ const SelectedClassCard = ({ cls, index, handleAction }) => {
             }</td>
             <td>$ {price}</td>
             <td className='text-center'>
-                <button onClick={() => handleAction(_id)} className="btn mx-auto   bg-red-600 border-0">
+                <button
+                    disabled={
+                        isClick && true
+                    }
+                    onClick={() => {
+                        setIsClick(true)
+                        return handleAction(_id)
+                    }}
+                    className="btn mx-auto bg-red-600 border-0">
                     <FaTrash />
                 </button>
                 <Link

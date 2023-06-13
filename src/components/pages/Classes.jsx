@@ -21,6 +21,7 @@ const Classes = () => {
     })
     // console.log(isSelected);
     const handleAction = id => {
+        // console.log(id);
         if (!user) {
             Swal.fire({
                 title: 'Please Login',
@@ -49,15 +50,24 @@ const Classes = () => {
             .then(data => {
                 // console.log(data);
                 if (data.modifiedCount) {
+                    isSelected.push(id)
+                    // console.log(isSelected);
                     refetch()
-                    Swal.fire(
-                        'Selected',
-                        'Your Class has been selected.',
-                        'success'
-                    )
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your Class has been selected.',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
                 }
             })
     }
+
+    if (isLoading) {
+        return <div className="h-screen w-1/2 mx-auto text-center flex justify-center items-center"><progress className="progress w-56"></progress></div>
+    }
+
     return (
         <div className='container mx-auto my-12'>
             <h2 className="text-3xl font-bold text-center uppercase mb-8 dark:text-gray-300">Our Classes</h2>

@@ -31,9 +31,13 @@ const Account = () => {
     }
 
     return (
-        <div className='container mx-auto my-12'>
-            <MySelectedClasses />
-            <MyEnrolledClasses />
+        <div className="container mx-auto">
+            <h2 className='text-center text-2xl font-bold uppercase mt-12'>Welcome Student Dashboard</h2>
+            <div className="flex gap-10 max-w-md mx-auto mt-12 justify-center items-center">
+                <Link className='btn border-0' to='/dashboard/my-selected'>SELECTED CLASSES</Link>
+                <Link className='btn border-0' to='/dashboard/my-enrolled'>ENROLLED CLASSES</Link>
+                <Link className='btn border-0' to='/dashboard/history'>Payment History</Link>
+            </div>
         </div>
     );
 };

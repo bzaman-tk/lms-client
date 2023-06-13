@@ -51,11 +51,13 @@ const PopularClasses = () => {
                 // console.log(data);
                 if (data.modifiedCount) {
                     refetch()
-                    Swal.fire(
-                        'Done!',
-                        ' ',
-                        'success'
-                    )
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Your Class has been selected.',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
                 }
             })
     }

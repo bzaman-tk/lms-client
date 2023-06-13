@@ -18,6 +18,8 @@ import Payment from "../components/payment/Payment";
 import History from "../components/payment/History";
 import AdminRoute from "./AdminRoute";
 import InstractorRoute from "./InstractorRoute";
+import MySelectedClasses from "../components/pages/accounts/MySelectedClasses";
+import MyEnrolledClasses from "../components/pages/accounts/MyEnrolledClasses";
 
 const routes = createBrowserRouter([
     {
@@ -90,6 +92,14 @@ const routes = createBrowserRouter([
             {
                 path: 'history',
                 element: <History />
+            },
+            {
+                path: 'my-enrolled',
+                element: <MyEnrolledClasses />
+            },
+            {
+                path: 'my-selected',
+                element: <MySelectedClasses />
             }
         ]
     }
